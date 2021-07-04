@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://tank/turret.tscn" type="PackedScene" id=1]
 [ext_resource path="res://base.gd" type="Script" id=2]
 [ext_resource path="res://tank/base.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/tools/door.tscn" type="PackedScene" id=4]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -28,6 +29,7 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 43.932,
 
 [node name="StaticBody" type="StaticBody" parent="Map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 6, 66, 0, 0 )
+collision_layer = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/StaticBody"]
 transform = Transform( 90, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -37,6 +39,7 @@ shape = SubResource( 1 )
 
 [node name="StaticBody2" type="StaticBody" parent="Map"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 6, 66, 32, 0 )
+collision_layer = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/StaticBody2"]
 transform = Transform( 90, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -46,6 +49,7 @@ shape = SubResource( 1 )
 
 [node name="StaticBody3" type="StaticBody" parent="Map"]
 transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 6, -25, 19, 0 )
+collision_layer = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="Map/StaticBody3"]
 transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -54,4 +58,9 @@ shape = SubResource( 1 )
 [node name="CSGBox" type="CSGBox" parent="Map/StaticBody3/CollisionShape"]
 transform = Transform( 1, 1.13687e-13, 0, -1.13687e-13, 1, 0, 0, 0, 1, 0, 0, 0 )
 
+[node name="Door" parent="Map" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 80, 0, 0, 0, 1, 25.5269, 15.2352, 0 )
+
 [connection signal="shot" from="Turret" to="." method="_on_Turret_shot"]
+[connection signal="go_to_next" from="Map/Door" to="." method="next"]
+[connection signal="go_to_previous" from="Map/Door" to="." method="prev"]

@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area",
+"class": "DoorComponent",
+"language": "GDScript",
+"path": "res://levels/tools/door.gd"
+}, {
 "base": "Spatial",
 "class": "Gun",
 "language": "GDScript",
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://tank/turret.gd"
 } ]
 _global_script_class_icons={
+"DoorComponent": "",
 "Gun": "",
 "LastMissionWorld": "",
 "Turret": ""
@@ -44,6 +50,16 @@ ui_shot={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
+
+[layer_names]
+
+3d_physics/layer_1="turret"
+3d_physics/layer_2="base-position"
+3d_physics/layer_3="walls"
+3d_physics/layer_4="door"
+3d_physics/layer_5="bullets"
+3d_physics/layer_6="enemies"
+3d_physics/layer_7="destroy-turret"
 
 [rendering]
 

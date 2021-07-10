@@ -6,8 +6,7 @@ export var camera_diff : float = 55
 
 func _input(event):
 	if event.is_action_pressed("ui_select"):
-		if event.is_pressed():
-			$Camera2.current = not $Camera2.current
+		$Camera2.current = not $Camera2.current
 	
 func next():
 	$Camera.translate(Vector3(camera_diff, 0, 0))

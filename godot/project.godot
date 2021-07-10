@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Area",
-"class": "DoorComponent",
-"language": "GDScript",
-"path": "res://levels/tools/door.gd"
-}, {
 "base": "Spatial",
 "class": "Gun",
 "language": "GDScript",
@@ -27,10 +22,9 @@ _global_script_classes=[ {
 "base": "KinematicBody",
 "class": "Turret",
 "language": "GDScript",
-"path": "res://tank/turret.gd"
+"path": "res://tank/head.gd"
 } ]
 _global_script_class_icons={
-"DoorComponent": "",
 "Gun": "",
 "LastMissionWorld": "",
 "Turret": ""
@@ -44,6 +38,12 @@ config/icon="res://icon.png"
 
 [input]
 
+ui_select={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":3,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
 ui_shot={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
@@ -53,8 +53,8 @@ ui_shot={
 
 [layer_names]
 
-3d_physics/layer_1="turret"
-3d_physics/layer_2="base-position"
+3d_physics/layer_1="head"
+3d_physics/layer_2="body"
 3d_physics/layer_3="walls"
 3d_physics/layer_4="door"
 3d_physics/layer_5="bullets"

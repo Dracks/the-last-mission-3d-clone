@@ -1,18 +1,18 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://tank/turret.gd" type="Script" id=1]
+[ext_resource path="res://tank/head.gd" type="Script" id=1]
 [ext_resource path="res://tank/bullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://tank/gun.gd" type="Script" id=3]
-[ext_resource path="res://tank/turret.tres" type="ArrayMesh" id=4]
+[ext_resource path="res://tank/head.tres" type="ArrayMesh" id=4]
 
-[sub_resource type="SphereShape" id=1]
-radius = 0.8
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.778312, 1, 1 )
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.898039, 0.12549, 0.12549, 1 )
 
-[node name="Turret" type="KinematicBody"]
-collision_mask = 8
+[node name="Head" type="KinematicBody"]
+collision_mask = 32
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -28,8 +28,3 @@ material/0 = SubResource( 2 )
 transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 3, -1.19209e-07, 0 )
 script = ExtResource( 3 )
 bullet = ExtResource( 2 )
-
-[node name="CSGSphere" type="CSGSphere" parent="Gun"]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 7.6147e-08, -0.985144, 0 )
-layers = 0
-radius = 0.565654

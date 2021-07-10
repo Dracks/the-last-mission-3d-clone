@@ -14,11 +14,13 @@ func set_looking_right(b: bool):
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	var advance = speed * delta
 	var collision = move_and_collide(Vector3.RIGHT*advance)
 	distance += advance
 	if collision:
+		var debug = range(0,6)
+		
 		if collision.collider.has_method('damage'):
 			collision.collider.damage()
 		get_parent().remove_child(self)

@@ -4,11 +4,10 @@ class_name LastMissionWorld
 
 export var camera_diff : float = 55
 
-func _on_Turret_shot(bullet: PackedScene, translation: Vector3, looking_right:bool):
-	var new_bullet : KinematicBody = bullet.instance()
-	add_child(new_bullet)
-	new_bullet.looking_right = looking_right
-	new_bullet.set_translation(to_local(translation))
+func _input(event):
+	if event.is_action_pressed("ui_select"):
+		if event.is_pressed():
+			$Camera2.current = not $Camera2.current
 	
 func next():
 	$Camera.translate(Vector3(camera_diff, 0, 0))
@@ -16,3 +15,10 @@ func next():
 func prev():
 	$Camera.translate(Vector3(-camera_diff, 0 ,0))
 	
+
+
+func _on_Head_shot(bullet: PackedScene, translation: Vector3, looking_right:bool):
+	var new_bullet : KinematicBody = bullet.instance()
+	add_child(new_bullet)
+	new_bullet.looking_right = looking_right
+	new_bullet.set_translation(to_local(translation))

@@ -1,6 +1,6 @@
 extends KinematicBody
 
-signal shot(bullet, translation, point_at)
+signal shot(bullet, translation, looking_right)
 
 class_name Turret
 
@@ -37,7 +37,7 @@ func _input(event: InputEvent):
 	left = check(event, 'ui_left', left)
 	right = check(event, 'ui_right', right)
 
-func _process(delta: float):
+func _physics_process(delta: float):
 	if up or down:
 		if up and not down:
 			move_and_collide(up_direction*delta)
@@ -45,10 +45,9 @@ func _process(delta: float):
 			move_and_collide(-2*delta*up_direction)
 		else:
 			move_and_collide(-delta*up_direction)
-			pass
 	else:
 		move_and_collide(-delta*up_direction)
-		pass
+			
 	
 	if left or right:
 		if left and not right:

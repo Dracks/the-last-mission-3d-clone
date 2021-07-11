@@ -6,7 +6,6 @@
 extents = Vector3( 24, 15, 1 )
 
 [node name="FocusScene" type="Area"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0 )
 collision_layer = 8
 script = ExtResource( 1 )
 

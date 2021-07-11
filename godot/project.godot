@@ -15,9 +15,29 @@ _global_script_classes=[ {
 "path": "res://tank/gun.gd"
 }, {
 "base": "Spatial",
+"class": "Horizontal",
+"language": "GDScript",
+"path": "res://levels/tools/horizontal.gd"
+}, {
+"base": "Spatial",
 "class": "LastMissionWorld",
 "language": "GDScript",
 "path": "res://base.gd"
+}, {
+"base": "Node",
+"class": "Repeat",
+"language": "GDScript",
+"path": "res://levels/tools/repeat.gd"
+}, {
+"base": "Spatial",
+"class": "ScreenBase",
+"language": "GDScript",
+"path": "res://levels/tools/screen-base.gd"
+}, {
+"base": "KinematicBody",
+"class": "TankBody",
+"language": "GDScript",
+"path": "res://tank/body.gd"
 }, {
 "base": "KinematicBody",
 "class": "Turret",
@@ -26,7 +46,11 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Gun": "",
+"Horizontal": "",
 "LastMissionWorld": "",
+"Repeat": "",
+"ScreenBase": "",
+"TankBody": "",
 "Turret": ""
 }
 

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://levels/assets/tile-base.gd" type="Script" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.75, 1.5, 2.5 )
+
+[node name="StaticBody" type="StaticBody"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="CollisionShape"]
+width = 1.5
+height = 3.0
+depth = 5.0
+
+[node name="CSGSphere" type="CSGSphere" parent="CollisionShape"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.47049 )
+radius = 0.443497

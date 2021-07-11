@@ -12,6 +12,7 @@ var right: bool = false
 var looking_right: bool = false
 var looking_left: bool = false
 var current_angle: float = 0
+var is_coupled: bool = false
 
 # velocity
 export var v_rotate: float = PI*1.5
@@ -20,6 +21,8 @@ export var v_vertical: float = 10
 
 var up_direction = Vector3(0, v_vertical, 0)
 var forward = Vector3(v_horizontal, 0, 0)
+
+var tank_body : TankBody
 
 onready var gun = get_node('Gun')
 
@@ -54,13 +57,22 @@ func _physics_process(delta: float):
 			if not looking_left:
 				rotate_logic(v_rotate*delta)
 			else:
-				move_and_collide(-forward*delta)
+				move_with_body(-forward*delta)
 		elif right:
 			if not looking_right:
 				rotate_logic(-v_rotate*delta)
 			else:
-				move_and_collide(forward*delta)
+				move_with_body(forward*delta)
 
+
+func move_with_body(movement: Vector3):
+	if is_coupled:
+		var collision = tank_body.move_and_collide(movement, true, true, true)
+		if collision:
+			movement = collision.get_travel()
+		tank_body.move_and_collide(movement)
+	move_and_collide(movement)
+	
 
 func rotate_logic(angle: float)->void:
 	gun.enabled = false
@@ -78,3 +90,13 @@ func rotate_logic(angle: float)->void:
 		gun.enabled = true
 
 	set_rotation(Vector3(0, -current_angle, 0))
+
+
+func _on_Coupling_body_entered(body):
+	is_coupled = true
+	if not tank_body:
+		tank_body = body.parent()
+	
+
+func _on_Coupling_body_exited(body):
+	is_coupled = false

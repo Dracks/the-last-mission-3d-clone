@@ -3,8 +3,8 @@
 [ext_resource path="res://tank/head.tscn" type="PackedScene" id=1]
 [ext_resource path="res://base.gd" type="Script" id=2]
 [ext_resource path="res://tank/body.tscn" type="PackedScene" id=3]
-[ext_resource path="res://levels/debug.tscn" type="PackedScene" id=4]
 [ext_resource path="res://tools/pause.gd" type="Script" id=5]
+[ext_resource path="res://levels/map.tscn" type="PackedScene" id=6]
 
 [node name="World" type="Spatial"]
 script = ExtResource( 2 )
@@ -23,13 +23,12 @@ current = true
 [node name="Camera2" type="Camera" parent="."]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 43.932, 9.49482, 16.021 )
 
-[node name="Map" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, -0.0232773, -0.000469208 )
-
 [node name="Node" type="Node" parent="."]
 
 [node name="Pause" type="Node" parent="Node"]
 pause_mode = 2
 script = ExtResource( 5 )
+
+[node name="Spatial" parent="." instance=ExtResource( 6 )]
 
 [connection signal="shot" from="Head" to="." method="_on_Head_shot"]

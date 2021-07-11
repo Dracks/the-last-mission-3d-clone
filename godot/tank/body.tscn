@@ -22,8 +22,9 @@ mesh = ExtResource( 1 )
 material/0 = null
 
 [node name="RigidBody" type="RigidBody" parent="."]
-collision_layer = 2
-collision_mask = 2
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.133036, 0 )
+collision_layer = 65
+collision_mask = 64
 mode = 1
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody"]

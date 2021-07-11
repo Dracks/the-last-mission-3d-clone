@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://levels/level-01.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/tools/horizontal.gd" type="Script" id=2]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Horizontal" type="Spatial" parent="."]
+script = ExtResource( 2 )
+
+[node name="screen-01" parent="Horizontal" instance=ExtResource( 1 )]

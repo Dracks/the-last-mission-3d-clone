@@ -7,3 +7,8 @@
 script = ExtResource( 2 )
 
 [node name="Focus" parent="." instance=ExtResource( 1 )]
+
+[node name="Tasks" type="Spatial" parent="."]
+visible = false
+
+[connection signal="on_focus" from="Focus" to="." method="_on_Focus_on_focus"]

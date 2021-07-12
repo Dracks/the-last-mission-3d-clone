@@ -10,6 +10,7 @@ extents = Vector3( 6, 0.9, 3.3 )
 extents = Vector3( 0.2, 0.1, 0.2 )
 
 [node name="Base" type="KinematicBody"]
+collision_layer = 0
 collision_mask = 49
 script = ExtResource( 2 )
 
@@ -21,12 +22,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0 )
 mesh = ExtResource( 1 )
 material/0 = null
 
-[node name="RigidBody" type="RigidBody" parent="."]
+[node name="Coupling" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.133036, 0 )
-collision_layer = 65
-collision_mask = 64
+collision_layer = 64
+collision_mask = 65
 mode = 1
 
-[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+[node name="CollisionShape" type="CollisionShape" parent="Coupling"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 2 )

@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://levels/tools/repeat.gd" type="Script" id=1]
+[ext_resource path="res://levels/tools/horizontal.gd" type="Script" id=2]
+[ext_resource path="res://levels/assets/floor-1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/tools/Screen-base.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/tools/instantiate-enemy.gd" type="Script" id=5]
+[ext_resource path="res://enemies/sample.tscn" type="PackedScene" id=6]
+
+[node name="Screen-02" instance=ExtResource( 4 )]
+
+[node name="Horizontal" type="Spatial" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4582, -13.4895, 0 )
+script = ExtResource( 2 )
+
+[node name="Repeat" type="Node" parent="Horizontal" index="0"]
+script = ExtResource( 1 )
+number = 50
+
+[node name="First" parent="Horizontal/Repeat" index="0" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4582, -13.4895, 0 )
+collision_layer = 0
+
+[node name="InstantiateEnemy" type="Spatial" parent="Tasks" index="0"]
+script = ExtResource( 5 )
+
+[node name="KinematicBody" parent="Tasks/InstantiateEnemy" index="0" instance=ExtResource( 6 )]

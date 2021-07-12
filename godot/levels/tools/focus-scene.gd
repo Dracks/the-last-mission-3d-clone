@@ -1,5 +1,6 @@
 extends Area
 
+signal on_focus
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -23,5 +24,7 @@ func update_shape():
 		shape.set_extents( Vector3(screen_width-3.5, 15, 1))
 
 func _on_FocusScene_body_entered(body):
+	emit_signal("on_focus")
 	var origin = main_camera.translation
-	main_camera.set_translation(Vector3(translation.x, translation.y, origin.z))
+	var global = to_global(Vector3.ZERO)
+	main_camera.set_translation(Vector3(global.x, global.y, origin.z))

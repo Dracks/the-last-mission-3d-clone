@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://tank/head.tscn" type="PackedScene" id=1]
 [ext_resource path="res://base.gd" type="Script" id=2]
-[ext_resource path="res://tank/body.tscn" type="PackedScene" id=3]
 [ext_resource path="res://tools/pause.gd" type="Script" id=5]
 [ext_resource path="res://levels/map.tscn" type="PackedScene" id=6]
 
@@ -10,11 +9,8 @@
 script = ExtResource( 2 )
 
 [node name="Head" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9222, -0.335438, 0 )
 collision_mask = 15
-
-[node name="Body" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.2721, 25.8751 )
@@ -29,6 +25,6 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 43.932,
 pause_mode = 2
 script = ExtResource( 5 )
 
-[node name="Spatial" parent="." instance=ExtResource( 6 )]
+[node name="Map" parent="." instance=ExtResource( 6 )]
 
 [connection signal="shot" from="Head" to="." method="_on_Head_shot"]

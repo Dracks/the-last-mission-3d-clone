@@ -15,7 +15,9 @@ func _ready():
 		if child.has_method("set_translation"):
 			var new_offset : float = child.width
 			offset = offset + new_offset + previous_offset
+			previous_offset = new_offset
 			child.set_translation(Vector3(offset, 0, 0))
+			
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

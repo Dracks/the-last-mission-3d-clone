@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody",
+"class": "EnemyBase",
+"language": "GDScript",
+"path": "res://enemies/enemy-base.gd"
+}, {
+"base": "Node",
+"class": "GameControllerSrc",
+"language": "GDScript",
+"path": "res://game/game-controller.gd"
+}, {
 "base": "Spatial",
 "class": "Gun",
 "language": "GDScript",
@@ -18,6 +28,16 @@ _global_script_classes=[ {
 "class": "Horizontal",
 "language": "GDScript",
 "path": "res://levels/tools/horizontal.gd"
+}, {
+"base": "Spatial",
+"class": "InstantiateBody",
+"language": "GDScript",
+"path": "res://levels/tools/instantiate-body.gd"
+}, {
+"base": "Spatial",
+"class": "InstantiateEnemy",
+"language": "GDScript",
+"path": "res://levels/tools/instantiate-enemy.gd"
 }, {
 "base": "Spatial",
 "class": "LastMissionWorld",
@@ -45,8 +65,12 @@ _global_script_classes=[ {
 "path": "res://tank/head.gd"
 } ]
 _global_script_class_icons={
+"EnemyBase": "",
+"GameControllerSrc": "",
 "Gun": "",
 "Horizontal": "",
+"InstantiateBody": "",
+"InstantiateEnemy": "",
 "LastMissionWorld": "",
 "Repeat": "",
 "ScreenBase": "",
@@ -59,6 +83,10 @@ _global_script_class_icons={
 config/name="the last mission"
 run/main_scene="res://Base.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GameController="*res://game/game-controller.gd"
 
 [input]
 
@@ -89,7 +117,7 @@ ui_pause={
 3d_physics/layer_4="door"
 3d_physics/layer_5="bullets"
 3d_physics/layer_6="enemies"
-3d_physics/layer_7="destroy-turret"
+3d_physics/layer_7="coupling"
 
 [rendering]
 

@@ -71,6 +71,8 @@ func move_with_body(movement: Vector3):
 		if collision:
 			movement = collision.get_travel()
 		tank_body.move_and_collide(movement)
+	else: 
+		movement.z = -translation.z
 	move_and_collide(movement)
 	
 
@@ -93,9 +95,13 @@ func rotate_logic(angle: float)->void:
 
 
 func _on_Coupling_body_entered(body):
+	print("Coupling on!", body, body.get_name())
 	is_coupled = true
-	if not tank_body:
-		tank_body = body.parent()
+	tank_body = body.get_parent()
+	var tank_position = tank_body.to_global(Vector3.ZERO)
+	var difference = tank_position - to_global(Vector3.ZERO)
+	print(difference)
+	move_and_collide(Vector3(difference.x, 0, difference.z))
 	
 
 func _on_Coupling_body_exited(body):

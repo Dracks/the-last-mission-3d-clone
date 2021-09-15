@@ -16,8 +16,8 @@ var is_coupled: bool = false
 
 # velocity
 export var v_rotate: float = PI*1.5
-export var v_horizontal: float = 10
-export var v_vertical: float = 10
+export var v_horizontal: float = 14
+export var v_vertical: float = 14
 
 var up_direction = Vector3(0, v_vertical, 0)
 var forward = Vector3(v_horizontal, 0, 0)
@@ -49,8 +49,10 @@ func _physics_process(delta: float):
 		else:
 			move_and_collide(-delta*up_direction)
 	else:
-		move_and_collide(-delta*up_direction)
-			
+		var collision = move_and_collide(-delta*up_direction, true, true, true)
+		if not collision or not collision.travel or abs(collision.travel.z)>0.01:
+			move_and_collide(-delta*up_direction)
+		# move_and_collide(-delta*up_direction)
 	
 	if left or right:
 		if left and not right:
@@ -70,6 +72,9 @@ func move_with_body(movement: Vector3):
 		var collision = tank_body.move_and_collide(movement, true, true, true)
 		if collision:
 			movement = collision.get_travel()
+		"""var collision2 = move_and_collide(movement, true, true, true)
+		if collision2:
+			movement = collision2.get_travel()"""
 		tank_body.move_and_collide(movement)
 	else: 
 		movement.z = -translation.z

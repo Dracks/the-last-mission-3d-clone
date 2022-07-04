@@ -10,5 +10,10 @@
 script = ExtResource( 2 )
 
 [node name="screen-01" parent="Horizontal" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 0 )
 
 [node name="screen-02" parent="Horizontal" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 78, 0, 0 )
+
+[node name="screen-03" parent="Horizontal" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 130, 0, 0 )

@@ -1,9 +1,13 @@
-extends StaticBody
+tool
+extends Spatial
+
+class_name TileBase
 
 export(float) var width
 export(float) var height
 
 func _ready():
-	var box: BoxShape = $CollisionShape.shape
-	width = box.extents.x
-	height = box.extents.y
+	var box: CSGBox = $Box
+	width = box.width
+	height = box.height
+	print(width, height)

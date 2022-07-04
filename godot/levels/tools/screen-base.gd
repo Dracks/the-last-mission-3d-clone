@@ -1,3 +1,5 @@
+tool 
+
 extends Spatial
 
 class_name ScreenBase

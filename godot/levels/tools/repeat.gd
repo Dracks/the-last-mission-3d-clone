@@ -1,3 +1,4 @@
+tool
 extends Node
 
 class_name Repeat
@@ -14,3 +15,4 @@ func _ready():
 		parent.call_deferred("add_child", child_node.duplicate())
 	queue_free()
 	parent.call_deferred('_ready')
+	

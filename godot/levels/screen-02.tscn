@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://levels/tools/tiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/assets/roof-1.tscn" type="PackedScene" id=2]
@@ -6,13 +6,32 @@
 [ext_resource path="res://levels/tools/Screen-base.tscn" type="PackedScene" id=4]
 [ext_resource path="res://levels/tools/instantiate-enemy.gd" type="Script" id=5]
 [ext_resource path="res://enemies/sample.tscn" type="PackedScene" id=6]
+[ext_resource path="res://enemies/ciclic-movement.gd" type="Script" id=7]
 
 [node name="Screen-02" instance=ExtResource( 4 )]
+
+[node name="Tasks" parent="." index="1"]
+visible = true
 
 [node name="InstantiateEnemy" type="Spatial" parent="Tasks" index="0"]
 script = ExtResource( 5 )
 
 [node name="KinematicBody" parent="Tasks/InstantiateEnemy" index="0" instance=ExtResource( 6 )]
+
+[node name="Movement" type="Node" parent="Tasks/InstantiateEnemy/KinematicBody" index="2"]
+script = ExtResource( 7 )
+
+[node name="Spatial" type="Spatial" parent="Tasks/InstantiateEnemy/KinematicBody/Movement" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.67828, 9.17202, 0 )
+
+[node name="Spatial2" type="Spatial" parent="Tasks/InstantiateEnemy/KinematicBody/Movement" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.67828, -8.18076, 0 )
+
+[node name="Spatial3" type="Spatial" parent="Tasks/InstantiateEnemy/KinematicBody/Movement" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7447, 9.45608, 0 )
+
+[node name="Spatial4" type="Spatial" parent="Tasks/InstantiateEnemy/KinematicBody/Movement" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7447, -6.59466, 0 )
 
 [node name="Tiles" parent="." index="2" instance=ExtResource( 1 )]
 

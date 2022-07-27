@@ -45,6 +45,11 @@ _global_script_classes=[ {
 "path": "res://base.gd"
 }, {
 "base": "Node",
+"class": "RandomMovement",
+"language": "GDScript",
+"path": "res://enemies/ciclic-movement.gd"
+}, {
+"base": "Node",
 "class": "Repeat",
 "language": "GDScript",
 "path": "res://levels/tools/repeat.gd"
@@ -77,6 +82,7 @@ _global_script_class_icons={
 "InstantiateBody": "",
 "InstantiateEnemy": "",
 "LastMissionWorld": "",
+"RandomMovement": "",
 "Repeat": "",
 "ScreenBase": "",
 "TankBody": "",

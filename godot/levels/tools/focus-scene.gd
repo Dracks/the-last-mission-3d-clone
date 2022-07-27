@@ -1,6 +1,8 @@
 extends Area
 
 signal on_focus
+signal on_tank_body_in
+signal on_tank_body_out
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -24,7 +26,17 @@ func update_shape():
 		shape.set_extents( Vector3(screen_width-3.5, 15, 1))
 
 func _on_FocusScene_body_entered(body):
-	emit_signal("on_focus")
-	var origin = main_camera.translation
-	var global = to_global(Vector3.ZERO)
-	main_camera.set_translation(Vector3(global.x, global.y, origin.z))
+	print(body, body.name, body.get_groups())
+	var groups = body.get_groups()
+	if "tank_body" in groups:
+		emit_signal('on_tank_body_in')
+	if "head" in groups:
+		emit_signal("on_focus")
+		var origin = main_camera.translation
+		var global = to_global(Vector3.ZERO)
+		main_camera.set_translation(Vector3(global.x, global.y, origin.z))
+
+
+func _on_FocusScene_body_exited(body):
+	if body.name=="TankBody":
+		emit_signal('on_tank_body_out')

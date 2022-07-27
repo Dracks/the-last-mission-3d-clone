@@ -12,6 +12,7 @@ quantity = 37
 
 [node name="Body" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2, 0, 0 )
+collision_layer = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="Body"]
 shape = SubResource( 2 )

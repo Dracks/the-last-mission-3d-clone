@@ -14,3 +14,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0 )
 shape = SubResource( 1 )
 
 [connection signal="body_entered" from="." to="." method="_on_FocusScene_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_FocusScene_body_exited"]

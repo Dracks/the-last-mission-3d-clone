@@ -13,7 +13,6 @@ func _ready():
 	var previous_offset: float = 0
 	var offset: float=0
 	var children_list = get_children()
-	print("hello")
 	for child in children_list:
 		if child.has_method("set_translation"):
 			var new_offset : float = child.width

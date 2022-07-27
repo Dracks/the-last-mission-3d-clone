@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://tank/head.tscn" type="PackedScene" id=1]
 [ext_resource path="res://base.gd" type="Script" id=2]
 [ext_resource path="res://ui/basic-ui.gd" type="Script" id=3]
 [ext_resource path="res://tools/pause.gd" type="Script" id=5]
@@ -8,10 +7,6 @@
 
 [node name="World" type="Spatial"]
 script = ExtResource( 2 )
-
-[node name="Head" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9222, -0.335438, 0 )
-collision_mask = 15
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.2721, 25.8751 )
@@ -55,4 +50,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="shot" from="Head" to="." method="_on_Head_shot"]
+[node name="Lifes" type="Label" parent="Control/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -11.0
+margin_right = 40.0
+margin_bottom = 11.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

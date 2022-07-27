@@ -10,4 +10,3 @@ func _ready():
 	var box: CSGBox = $Box
 	width = box.width
 	height = box.height
-	print(width, height)

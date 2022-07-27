@@ -1,6 +1,7 @@
 extends KinematicBody
 
 signal shot(bullet, translation, looking_right)
+signal life_lost
 
 class_name Turret
 
@@ -100,14 +101,17 @@ func rotate_logic(angle: float)->void:
 
 
 func _on_Coupling_body_entered(body):
-	print("Coupling on!", body, body.get_name())
+	print("Coupling on!", body, to_global(Vector3.ZERO))
 	is_coupled = true
 	tank_body = body.get_parent()
 	var tank_position = tank_body.to_global(Vector3.ZERO)
 	var difference = tank_position - to_global(Vector3.ZERO)
-	print(difference)
 	move_and_collide(Vector3(difference.x, 0, difference.z))
 	
 
 func _on_Coupling_body_exited(body):
 	is_coupled = false
+	
+func damage():
+	emit_signal("life_lost")
+	queue_free()

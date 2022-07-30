@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://levels/assets/tile-base.gd" type="Script" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+vertex_color_use_as_albedo = true
+albedo_color = Color( 0.00392157, 0.0156863, 0.709804, 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+vertex_color_use_as_albedo = true
+albedo_color = Color( 0.894118, 0.901961, 0.0823529, 1 )
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 1 )
+width = 1.4
+height = 3.0
+
+[node name="Box" type="CSGBox" parent="."]
+width = 1.0
+height = 1.5
+depth = 5.0
+material = SubResource( 1 )
+
+[node name="CSGSphere" type="CSGSphere" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.47049 )
+radius = 0.25
+material = SubResource( 2 )

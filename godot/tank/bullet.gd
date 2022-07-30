@@ -19,10 +19,12 @@ func _physics_process(delta):
 	var collision = move_and_collide(Vector3.RIGHT*advance)
 	distance += advance
 	if collision:
-		var debug = range(0,6)
 		
 		if collision.collider.has_method('damage'):
+			print("Has damage!")
 			collision.collider.damage()
+		else: 
+			print("No No!")
 		get_parent().remove_child(self)
 	elif distance > distance_range:
 		get_parent().remove_child(self)

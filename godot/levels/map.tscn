@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://levels/screen-01.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/tools/horizontal.gd" type="Script" id=2]
+[ext_resource path="res://levels/screen-02.tscn" type="PackedScene" id=3]
+
+[node name="Map" type="Spatial"]
+
+[node name="Horizontal" type="Spatial" parent="."]
+script = ExtResource( 2 )
+
+[node name="screen-01" parent="Horizontal" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 0 )
+
+[node name="screen-02" parent="Horizontal" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 78, 0, 0 )
+
+[node name="screen-03" parent="Horizontal" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 130, 0, 0 )

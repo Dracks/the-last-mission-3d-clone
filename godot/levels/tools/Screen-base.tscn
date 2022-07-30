@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://levels/tools/FocusScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/tools/screen-base.gd" type="Script" id=2]
+
+[node name="ScreenBase" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Focus" parent="." instance=ExtResource( 1 )]
+collision_mask = 3
+
+[node name="Tasks" type="Spatial" parent="."]
+visible = false
+
+[connection signal="on_focus" from="Focus" to="." method="_on_Focus_on_focus"]

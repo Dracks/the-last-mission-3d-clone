@@ -26,11 +26,9 @@ func update_shape():
 		shape.set_extents( Vector3(screen_width-3.5, 15, 1))
 
 func _on_FocusScene_body_entered(body):
-	print(body, body.name, body.get_groups())
-	var groups = body.get_groups()
-	if "tank_body" in groups:
+	if body.is_in_group("tank_body"):
 		emit_signal('on_tank_body_in')
-	if "head" in groups:
+	if body.is_in_group("head"):
 		emit_signal("on_focus")
 		var origin = main_camera.translation
 		var global = to_global(Vector3.ZERO)
@@ -38,5 +36,5 @@ func _on_FocusScene_body_entered(body):
 
 
 func _on_FocusScene_body_exited(body):
-	if body.name=="TankBody":
+	if body.is_in_group("tank_body"):
 		emit_signal('on_tank_body_out')

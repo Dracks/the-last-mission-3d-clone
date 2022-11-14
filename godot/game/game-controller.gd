@@ -76,3 +76,4 @@ func set_initial_restart_coords(coords: Vector3):
 func restart_game():
 	initial_values()
 	instantiate_head()
+	

@@ -9,6 +9,7 @@ onready var gc : GameController = get_node('/root/GameController')
 func _ready():
 	if self.initial_checkpoint:
 		gc.set_restart_coords(to_global(Vector3.ZERO))
+		gc.set_initial_restart_coords(to_global(Vector3.ZERO))
 		gc.call_deferred('instantiate_head')
 
 func init():

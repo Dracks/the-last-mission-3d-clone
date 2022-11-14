@@ -7,3 +7,9 @@ If you are looking for a remake of the last mission, I recommend you this projec
 ![Rotation](docs/img/rotation.png)
 ![flying](docs/img/flying.png)
 ![Shots](docs/img/shots.png)
+
+# Credits
+* Game based on OperaSoft The last mission game
+
+## Fonts used
+* [Steps mono](https://fontlibrary.org/en/font/steps-mono)

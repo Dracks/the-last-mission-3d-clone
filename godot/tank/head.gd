@@ -25,6 +25,8 @@ var forward = Vector3(v_horizontal, 0, 0)
 
 var tank_body : TankBody
 
+onready var gc = get_node("/root/GameController")
+
 onready var gun = get_node('Gun')
 
 func _ready():
@@ -40,6 +42,10 @@ func _input(event: InputEvent):
 	down = check(event, 'ui_down', down)
 	left = check(event, 'ui_left', left)
 	right = check(event, 'ui_right', right)
+	
+func _process(delta:float):
+	if !is_coupled:
+		gc.dec_energy(delta)
 
 func _physics_process(delta: float):
 	if up or down:

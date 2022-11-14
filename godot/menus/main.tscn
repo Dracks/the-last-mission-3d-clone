@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://menus/main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://tank/body.tres" type="ArrayMesh" id=2]
+[ext_resource path="res://tank/head.tres" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/Base Laser.tscn" type="PackedScene" id=4]
+[ext_resource path="res://menus/main.gd" type="Script" id=5]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -50.0
+margin_right = 200.0
+margin_bottom = 50.0
+theme = ExtResource( 1 )
+text = "Press any key to start"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 17.55 )
+
+[node name="Spatial" type="Spatial" parent="Spatial"]
+transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 0, 0 )
+
+[node name="head" type="MeshInstance" parent="Spatial/Spatial"]
+transform = Transform( -1.13133e-08, 0.258819, 0.965926, -1, -4.37114e-08, 0, 4.2222e-08, -0.965926, 0.258819, 0, 2.6, 0 )
+mesh = ExtResource( 3 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="body" type="MeshInstance" parent="Spatial/Spatial"]
+transform = Transform( 0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 0, 0 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="Base Laser" parent="Spatial/Spatial" instance=ExtResource( 4 )]
+transform = Transform( 0.965926, -0.258819, 1.13133e-08, 0, -4.37114e-08, -1, 0.258819, 0.965926, -4.2222e-08, -2.31152, 2.60407, 9.98508 )

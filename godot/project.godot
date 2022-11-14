@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "LastMissionWorld",
 "language": "GDScript",
-"path": "res://base.gd"
+"path": "res://game/world.gd"
 }, {
 "base": "Node",
 "class": "RandomMovement",
@@ -73,6 +73,11 @@ _global_script_classes=[ {
 "class": "Turret",
 "language": "GDScript",
 "path": "res://tank/head.gd"
+}, {
+"base": "Control",
+"class": "UIControl",
+"language": "GDScript",
+"path": "res://ui/basic-ui.gd"
 } ]
 _global_script_class_icons={
 "EnemyBase": "",
@@ -87,13 +92,14 @@ _global_script_class_icons={
 "ScreenBase": "",
 "TankBody": "",
 "TileBase": "",
-"Turret": ""
+"Turret": "",
+"UIControl": ""
 }
 
 [application]
 
 config/name="the last mission"
-run/main_scene="res://Base.tscn"
+run/main_scene="res://start.tscn"
 config/icon="res://icon.png"
 
 [autoload]

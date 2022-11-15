@@ -28,3 +28,8 @@ func _physics_process(delta):
 		get_parent().remove_child(self)
 	elif distance > distance_range:
 		get_parent().remove_child(self)
+
+
+func reverse_damage(obj):
+	obj.damage()
+	get_parent().remove_child(self)

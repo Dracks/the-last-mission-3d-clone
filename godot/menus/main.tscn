@@ -24,6 +24,7 @@ margin_top = -50.0
 margin_right = 200.0
 margin_bottom = 50.0
 theme = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.333333 )
 text = "Press any key to start"
 align = 1
 valign = 1
@@ -43,13 +44,11 @@ transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 0, 0 )
 transform = Transform( -1.13133e-08, 0.258819, 0.965926, -1, -4.37114e-08, 0, 4.2222e-08, -0.965926, 0.258819, 0, 2.6, 0 )
 mesh = ExtResource( 3 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="body" type="MeshInstance" parent="Spatial/Spatial"]
 transform = Transform( 0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 0, 0 )
 mesh = ExtResource( 2 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="Base Laser" parent="Spatial/Spatial" instance=ExtResource( 4 )]
 transform = Transform( 0.965926, -0.258819, 1.13133e-08, 0, -4.37114e-08, -1, 0.258819, 0.965926, -4.2222e-08, -2.31152, 2.60407, 9.98508 )

@@ -24,3 +24,5 @@ func _physics_process(delta):
 	if collision:
 		if collision.collider.has_method('damage'):
 			collision.collider.damage()
+		elif collision.collider.has_method('reverse_damage'):
+			collision.collider.reverse_damage(self)

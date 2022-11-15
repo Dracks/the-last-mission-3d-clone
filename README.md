@@ -30,6 +30,7 @@ If you are looking for a remake of the last mission, I recommend you this projec
 
 ## Fonts
 * [Steps mono](https://fontlibrary.org/en/font/steps-mono)
+* [LCD](https://fontlibrary.org/en/font/lcd#LCD-14)
 
 ## Sounds
 The sounds are extracted from [Last mission project](https://github.com/dmitrysmagin/last-mission)

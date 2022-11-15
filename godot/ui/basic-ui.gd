@@ -40,7 +40,7 @@ func _on_main_menu_pressed():
 func make_screenshot():
 	get_viewport().set_clear_mode(Viewport.CLEAR_MODE_ONLY_NEXT_FRAME)
 	yield(get_tree(), "idle_frame")
-	yield(get_tree(), "idle_frame")		
+	yield(get_tree(), "idle_frame")
 	var image = get_viewport().get_texture().get_data()
 	image.flip_y()
 

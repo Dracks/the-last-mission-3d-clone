@@ -4,8 +4,8 @@
 [ext_resource path="res://assets/Base Laser.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CylinderShape" id=1]
-radius = 0.1
 height = 6.0
+radius = 0.1
 
 [node name="Bullet" type="KinematicBody"]
 collision_layer = 16

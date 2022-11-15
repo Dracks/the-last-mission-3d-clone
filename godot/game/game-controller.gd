@@ -2,8 +2,13 @@ extends Node
 
 class_name GameControllerSrc
 
-var points: int = 0
-var lifes: int = 10
+
+var initial_points = 0
+var initial_lifes = 10
+var initial_energy = 1000
+
+var points: int
+var lifes: int
 var energy: float = 1000.0
 var is_body_destroyed: bool = true
 var tank_body_instance: TankBody
@@ -30,9 +35,9 @@ func _ready():
 	initial_values()
 	
 func initial_values():
-	points=0
-	lifes=1
-	energy=1000
+	points= initial_points
+	lifes= initial_lifes
+	energy= initial_energy
 
 func instantiate_head():
 	var head = head_scene.instance()

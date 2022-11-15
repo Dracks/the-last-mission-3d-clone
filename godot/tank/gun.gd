@@ -1,17 +1,17 @@
-extends Spatial
+extends Node3D
 
 class_name Gun
 
-onready var turret: KinematicBody = get_parent()
-onready var world: Spatial = find_parent("World")
+@onready var turret: CharacterBody3D = get_parent()
+@onready var world: Node3D = find_parent("World3D")
 
 var is_shoting: bool = false
 var next_shot_delay : float = 0
-export(float) var max_delay: float = 0.2
+@export var max_delay: float = 0.2
 var enabled: bool = true
 
-export(PackedScene) var bullet
-onready var bullet_instance = bullet.instance()
+@export var bullet: PackedScene
+@onready var bullet_instance = bullet.instantiate()
 # var bullet = preload("res://tank/Bullet.tscn")
 
 func _input(event: InputEvent):

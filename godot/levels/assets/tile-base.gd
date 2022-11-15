@@ -1,12 +1,12 @@
-tool
-extends Spatial
+@tool
+extends Node3D
 
 class_name TileBase
 
-export(float) var width
-export(float) var height
+@export var width: float
+@export var height: float
 
 func _ready():
-	var box: CSGBox = $Box
-	width = box.width
-	height = box.height
+	var box: CSGBox3D = $Box
+	width = box.size.x
+	height = box.size.y

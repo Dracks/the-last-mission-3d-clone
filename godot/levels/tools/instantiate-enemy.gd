@@ -1,4 +1,4 @@
-extends Spatial
+extends Node3D
 
 class_name InstantiateEnemy
 
@@ -18,4 +18,4 @@ func init():
 		enemy = enemy_base.duplicate()
 	if not enemy.get_parent():
 		owner.add_child(enemy)
-	enemy.set_translation(owner.to_local(to_global(Vector3.ZERO)))
+	enemy.set_position(owner.to_local(to_global(Vector3.ZERO)))

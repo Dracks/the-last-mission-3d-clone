@@ -1,8 +1,8 @@
-extends Spatial
+extends Node3D
 
 class_name InstantiateBody
 
-export var is_active: bool = false
+@export var is_active: bool = false
 
 var gc: GameControllerSrc
 func _ready():

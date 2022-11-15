@@ -9,20 +9,21 @@ var main = preload("res://menus/main.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var f := File.new()
-	var doFileExists = f.file_exists(FILE_NAME)
+	var doFileExists = FileAccess.file_exists(FILE_NAME)
 	if doFileExists:
-		var err := f.open(FILE_NAME, f.READ)
-		if err:
-			print("Error ({}) loading start.json".format(err))
+		var file := FileAccess.open(FILE_NAME, FileAccess.READ)
+		if file.get_error():
+			print("Error ({}) loading start.json".format(file.get_error()))
 			start_default()
 		else:
-			var config := JSON.parse(f.get_as_text())
-			if config.error:
-				print("Error {} parsing start.json: \n{}\n{}".format([config.error, config.error_string, config.error_line]))
+			var test_json_conv = JSON.new()
+			var error = test_json_conv.parse(file.get_as_text())
+			var config :Dictionary= test_json_conv.get_data()
+			if error:
+				print("Error {} parsing start.json: \n{}\n{}".format([error, config.error_string, config.error_line]))
 				start_default()
 			else:
-				execute_data(config.result)
+				execute_data(config)
 	else:
 		start_default()
 
@@ -40,7 +41,7 @@ func execute_data(config: Dictionary):
 
 
 func start_default():
-	var error = get_tree().change_scene_to(main)
+	var error = get_tree().change_scene_to_packed(main)
 	if error:
 		print('Error ({}) loading main scene'.format(error))
 		
@@ -50,6 +51,6 @@ func start_game(data: Dictionary):
 	game_controller.initial_points = data.get('points', game_controller.initial_points)
 	game_controller.initial_energy = data.get('energy', game_controller.initial_energy)
 	game_controller.initial_values()
-	var error = get_tree().call_deferred("change_scene_to", worldScene)
+	var error = get_tree().call_deferred("change_scene_to_packed", worldScene)
 	if error:
 		print('Error ({}) loading main scene'.format(error))

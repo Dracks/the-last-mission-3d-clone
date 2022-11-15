@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://c6n8kv2fpuq45"]
 
-[ext_resource path="res://start.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://start.gd" id="1"]
 
 [node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")

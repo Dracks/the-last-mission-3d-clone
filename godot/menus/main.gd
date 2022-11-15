@@ -8,6 +8,6 @@ func _input(event):
 		
 
 func start_new_game():
-	var error = get_tree().call_deferred("change_scene", 'res://game/world.tscn')
+	var error = get_tree().call_deferred("change_scene_to_file", 'res://game/world.tscn')
 	if error:
 		print('Error ({}) loading main scene'.format(error))

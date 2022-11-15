@@ -1,10 +1,14 @@
-extends KinematicBody
+extends CharacterBody3D
 
 var distance: float = 0;
-export var distance_range: float = 60;
-export var speed: float = 30;
+@export var distance_range: float = 60;
+@export var speed: float = 30;
 
-var looking_right : bool setget set_looking_right
+var looking_right : bool :
+	get:
+		return looking_right # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of set_looking_right
 
 func set_looking_right(b: bool):
 

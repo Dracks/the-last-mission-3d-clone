@@ -1,10 +1,10 @@
-tool
+@tool
 extends Node
 
 class_name Repeat
 
 
-export(int) var number: int
+@export var number: int: int
 
 func _ready():
 	var child_node = get_child(0)

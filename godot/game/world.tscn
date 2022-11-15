@@ -4,24 +4,24 @@
 [ext_resource path="res://tools/pause.gd" type="Script" id=2]
 [ext_resource path="res://ui/basic-ui.gd" type="Script" id=3]
 [ext_resource path="res://game/world.gd" type="Script" id=4]
-[ext_resource path="res://menus/H2_font.tres" type="DynamicFont" id=5]
-[ext_resource path="res://menus/text_font.tres" type="DynamicFont" id=6]
-[ext_resource path="res://menus/lcd_font.tres" type="DynamicFont" id=7]
+[ext_resource path="res://menus/H2_font.tres" type="FontFile" id=5]
+[ext_resource path="res://menus/text_font.tres" type="FontFile" id=6]
+[ext_resource path="res://menus/lcd_font.tres" type="FontFile" id=7]
 
-[node name="World" type="Spatial"]
+[node name="World3D" type="Node3D"]
 script = ExtResource( 4 )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.2721, 25.8751 )
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.2721, 25.8751 )
 current = true
 
-[node name="Camera2" type="Camera" parent="."]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 43.932, 9.49482, 16.021 )
+[node name="Camera2" type="Camera3D" parent="."]
+transform = Transform3D( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 43.932, 9.49482, 16.021 )
 
 [node name="Node" type="Node" parent="."]
 
 [node name="Pause" type="Node" parent="Node"]
-pause_mode = 2
+process_mode = 2
 script = ExtResource( 2 )
 
 [node name="Map" parent="." instance=ExtResource( 1 )]
@@ -35,17 +35,17 @@ script = ExtResource( 3 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -40.0
+offset_top = -40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Score" type="Label" parent="Control/Panel"]
 anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 11.1565
-margin_right = 150.0
-margin_bottom = -11.0
+offset_left = 20.0
+offset_top = 11.1565
+offset_right = 150.0
+offset_bottom = -11.0
 custom_fonts/font = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -56,20 +56,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -60.0
-margin_top = -11.0
-margin_right = 40.0
-margin_bottom = 11.0
+offset_left = -60.0
+offset_top = -11.0
+offset_right = 40.0
+offset_bottom = 11.0
 custom_fonts/font = ExtResource( 7 )
 
 [node name="Battery" type="Label" parent="Control/Panel"]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -150.0
-margin_top = 11.0
-margin_right = -20.0
-margin_bottom = -11.0
+offset_left = -150.0
+offset_top = 11.0
+offset_right = -20.0
+offset_bottom = -11.0
 custom_fonts/font = ExtResource( 7 )
 
 [node name="GameOver" type="Panel" parent="Control"]
@@ -77,18 +77,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = -100.0
-margin_right = 200.0
-margin_bottom = 50.0
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 50.0
 
 [node name="Label" type="Label" parent="Control/GameOver"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -150.0
-margin_top = 10.0
-margin_right = 150.0
-margin_bottom = 43.0
+offset_left = -150.0
+offset_top = 10.0
+offset_right = 150.0
+offset_bottom = 43.0
 custom_fonts/font = ExtResource( 5 )
 text = "Game over!"
 align = 1
@@ -96,10 +96,10 @@ align = 1
 [node name="Restart" type="Button" parent="Control/GameOver"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 31.0
-margin_top = 93.0
-margin_right = -227.0
-margin_bottom = -22.0
+offset_left = 31.0
+offset_top = 93.0
+offset_right = -227.0
+offset_bottom = -22.0
 custom_fonts/font = ExtResource( 6 )
 text = "Restart"
 __meta__ = {
@@ -109,10 +109,10 @@ __meta__ = {
 [node name="MainMenu" type="Button" parent="Control/GameOver"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 223.0
-margin_top = 91.0
-margin_right = -35.0
-margin_bottom = -24.0
+offset_left = 223.0
+offset_top = 91.0
+offset_right = -35.0
+offset_bottom = -24.0
 custom_fonts/font = ExtResource( 6 )
 text = "Main menu"
 __meta__ = {

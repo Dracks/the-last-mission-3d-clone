@@ -1,9 +1,8 @@
-extends KinematicBody
+class_name  Turret
+extends CharacterBody3D
 
-signal shot(bullet, translation, looking_right)
+signal shot(bullet, position, looking_right)
 signal life_lost
-
-class_name Turret
 
 var up: bool = false
 var down: bool = false
@@ -16,18 +15,18 @@ var current_angle: float = 0
 var is_coupled: bool = false
 
 # velocity
-export var v_rotate: float = PI*1.5
-export var v_horizontal: float = 14
-export var v_vertical: float = 14
+@export var v_rotate: float = PI*1.5
+@export var v_horizontal: float = 14
+@export var v_vertical: float = 14
 
-var up_direction = Vector3(0, v_vertical, 0)
+var up_velocity = Vector3(0, v_vertical, 0)
 var forward = Vector3(v_horizontal, 0, 0)
 
 var tank_body : TankBody
 
-onready var gc = get_node("/root/GameController")
+@onready var gc = get_node("/root/GameController")
 
-onready var gun = get_node('Gun')
+@onready var gun = get_node('Gun')
 
 func _ready():
 	rotate_logic(0)
@@ -50,16 +49,16 @@ func _process(delta:float):
 func _physics_process(delta: float):
 	if up or down:
 		if up and not down:
-			move_and_collide(up_direction*delta)
+			move_and_collide(up_velocity*delta)
 		elif down:
-			move_and_collide(-2*delta*up_direction)
+			move_and_collide(-2*delta*up_velocity)
 		else:
-			move_and_collide(-delta*up_direction)
+			move_and_collide(-delta*up_velocity)
 	else:
-		var collision = move_and_collide(-delta*up_direction, true, true, true)
+		var collision = move_and_collide(-delta*up_velocity, true, true, true)
 		if not collision or not collision.travel or abs(collision.travel.z)>0.01:
-			move_and_collide(-delta*up_direction)
-		# move_and_collide(-delta*up_direction)
+			move_and_collide(-delta*up_velocity)
+		# move_and_collide(-delta*up_velocity)
 	
 	if left or right:
 		if left and not right:
@@ -84,7 +83,7 @@ func move_with_body(movement: Vector3):
 			movement = collision2.get_travel()"""
 		tank_body.move_and_collide(movement)
 	else: 
-		movement.z = -translation.z
+		movement.z = -position.z
 	move_and_collide(movement)
 	
 
@@ -107,7 +106,7 @@ func rotate_logic(angle: float)->void:
 
 
 func _on_Coupling_body_entered(body):
-	print("Coupling on!", body, to_global(Vector3.ZERO))
+	print("Coupling checked!", body, to_global(Vector3.ZERO))
 	is_coupled = true
 	tank_body = body.get_parent()
 	var tank_position = tank_body.to_global(Vector3.ZERO)

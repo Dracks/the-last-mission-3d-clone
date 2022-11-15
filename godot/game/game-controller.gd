@@ -16,20 +16,19 @@ var tank_body_instance: TankBody
 var restart_coordinates : Vector3
 var initial_restart_coordinates: Vector3
 
-onready var world : LastMissionWorld
+@onready var world : LastMissionWorld
 
 var body_scene= preload('res://tank/body.tscn')
 var head_scene = preload('res://tank/head.tscn')
 
-var ui_control: UIControl setget ui_control_set, ui_control_get
+var ui_control: UIControl :
+	get:
+		return ui_control # TODOConverter40 Copy here content of ui_control_get
+	set(new_ui):
+		print("Set ui!")
+		new_ui.connect("restart_game",Callable(self,"restart_game"))
+		ui_control=new_ui
 
-
-func ui_control_set(new_ui: UIControl):
-	new_ui.connect("restart_game", self, "restart_game")
-	ui_control=new_ui
-	
-func ui_control_get():
-	return ui_control
 
 func _ready():
 	initial_values()
@@ -40,18 +39,18 @@ func initial_values():
 	energy= initial_energy
 
 func instantiate_head():
-	var head = head_scene.instance()
+	var head = head_scene.instantiate()
 	world.add_child(head)
 	head.add_to_group('head')
-	head.set_translation(self.restart_coordinates)
-	head.connect("life_lost", self, "life_lost")
-	head.connect('shot', world, "_on_Head_shot")
+	head.set_position(self.restart_coordinates)
+	head.connect("life_lost",Callable(self,"life_lost"))
+	head.connect('shot',Callable(world,"_on_Head_shot"))
 
 func instantiate_body(position: Vector3):
-	var body = body_scene.instance()
+	var body = body_scene.instantiate()
 	body.add_to_group('tank_body')
 	world.add_child(body)
-	body.set_translation(position)
+	body.set_position(position)
 	tank_body_instance = body
 	is_body_destroyed = false
 	

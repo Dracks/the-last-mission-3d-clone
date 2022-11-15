@@ -1,9 +1,9 @@
-tool
+@tool
 	
-extends Spatial
+extends Node3D
 
-export var quantity:=3
-export var horizontal:=true
+@export var quantity:=3
+@export var horizontal:=true
 
 func _ready():
 	var tile : TileBase = $Tile
@@ -17,15 +17,15 @@ func _ready():
 	else:
 		offsetY = tile.height
 		baseShapeX = tile.width
-	if not Engine.editor_hint:
+	if not Engine.is_editor_hint():
 		remove_child(tile)
 	for i in range(quantity):
 		var node = tile.duplicate()
 		node.translate(Vector3(i*offsetX,i*offsetY,0))
 		add_child(node) # Parent could be any node in the scene
 	
-	var boxShape : BoxShape = $Body/CollisionShape.shape
+	var boxShape : BoxShape3D = $Body/CollisionShape3D.shape
 	boxShape.extents = Vector3(quantity*offsetX/2+baseShapeX, quantity*offsetY/2+baseShapeY, 3)
-	$Body.translation=Vector3(boxShape.extents.x-tile.width, boxShape.extents.y-tile.height, 0)
+	$Body.position=Vector3(boxShape.extents.x-tile.width, boxShape.extents.y-tile.height, 0)
 
 

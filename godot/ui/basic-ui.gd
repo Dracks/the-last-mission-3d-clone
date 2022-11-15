@@ -1,8 +1,7 @@
+class_name UIControl
 extends Control
 
 signal restart_game
-
-class_name UIControl
 
 func _ready():
 	set_points(0)
@@ -33,15 +32,15 @@ func _on_restart_pressed():
 
 
 func _on_main_menu_pressed():
-	var error = get_tree().change_scene('res://menus/main.tscn')
+	var error = get_tree().change_scene_to_file('res://menus/main.tscn')
 	if error:
 		print('Error ({}) loading main scene'.format(error))
 		
 func make_screenshot():
-	get_viewport().set_clear_mode(Viewport.CLEAR_MODE_ONLY_NEXT_FRAME)
-	yield(get_tree(), "idle_frame")
-	yield(get_tree(), "idle_frame")
+	get_viewport().set_clear_mode(SubViewport.CLEAR_MODE_ONCE)
+	await get_tree().idle_frame
+	await get_tree().idle_frame
 	var image = get_viewport().get_texture().get_data()
 	image.flip_y()
 
-	image.save_png("screenshot_%s.png" % [OS.get_unix_time()])
+	image.save_png("screenshot_%s.png" % [Time.get_unix_time_from_system()])

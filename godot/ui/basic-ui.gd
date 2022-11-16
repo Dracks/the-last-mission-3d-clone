@@ -16,13 +16,13 @@ func _input(event: InputEvent):
 		make_screenshot()
 
 func set_points(points: int):
-	$Panel/Score.text = "Score: "+str(points)
+	$Panel/Score.text = "SCORE: "+str(points)
 
 func set_lifes(lifes: int):
-	$Panel/Lifes.text = "Lifes: "+str(lifes)
+	$Panel/Lifes.text = "LIFES: "+str(lifes)
 	
 func set_battery(battery: float):
-	$Panel/Battery.text = "Battery: "+str(battery)
+	$Panel/Battery.text = "BATTERY: %.1f" % battery
 	
 func show_game_over():
 	$GameOver.show()

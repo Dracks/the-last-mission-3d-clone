@@ -23,7 +23,7 @@ func _ready():
 
 func update_shape():
 	if shape:
-		shape.set_extents( Vector3(screen_width-3.5, 15, 1))
+		shape.set_extents( Vector3(screen_width-3.5, 14, 1))
 
 func _on_FocusScene_body_entered(body):
 	if body.is_in_group("tank_body"):

@@ -11,12 +11,12 @@
 [node name="World" type="Spatial"]
 script = ExtResource( 4 )
 
-[node name="Camera" type="Camera" parent="."]
+[node name="Camera" type="Camera" parent="." groups=["camera"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.2721, 25.8751 )
 current = true
 
-[node name="Camera2" type="Camera" parent="."]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 43.932, 9.49482, 16.021 )
+[node name="Camera2" type="Camera" parent="." groups=["camera"]]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 43.932, 7.49482, 16.021 )
 
 [node name="Node" type="Node" parent="."]
 

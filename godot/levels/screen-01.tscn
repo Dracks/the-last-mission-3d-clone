@@ -92,6 +92,7 @@ material/0 = null
 
 [node name="CSGBox2" type="CSGBox" parent="Decorations" index="5"]
 transform = Transform( 0.8, 0, 0, 0, 15, 0, 0, 0, 1, -2.54592, 1, 0 )
+depth = 4.93378
 material = SubResource( 2 )
 
 [connection signal="on_tank_body_in" from="Focus" to="Tasks/checkpoint" method="_on_Focus_on_tank_body_in"]

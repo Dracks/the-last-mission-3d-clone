@@ -42,5 +42,8 @@ collision_mask = 64
 [node name="CollisionShape" type="CollisionShape" parent="Coupling"]
 shape = SubResource( 2 )
 
+[node name="Camera-head" type="Camera" parent="." groups=["camera"]]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 3, 0 )
+
 [connection signal="body_entered" from="Coupling" to="." method="_on_Coupling_body_entered"]
 [connection signal="body_exited" from="Coupling" to="." method="_on_Coupling_body_exited"]

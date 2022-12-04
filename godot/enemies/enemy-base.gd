@@ -9,11 +9,6 @@ onready var gc: GameControllerSrc = get_node("/root/GameController")
 
 onready var destination: Vector3 = translation
 
-func damage():
-	gc.inc_points(points)
-	$ExplosionSound.play()
-	queue_free()
-
 func _physics_process(delta):
 	var advance = delta*velocity
 	var advance_square = advance*advance

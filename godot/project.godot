@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "CiclicMovement",
+"language": "GDScript",
+"path": "res://enemies/ciclic-movement.gd"
+}, {
 "base": "KinematicBody",
 "class": "EnemyBase",
 "language": "GDScript",
@@ -45,11 +50,6 @@ _global_script_classes=[ {
 "path": "res://game/world.gd"
 }, {
 "base": "Node",
-"class": "RandomMovement",
-"language": "GDScript",
-"path": "res://enemies/ciclic-movement.gd"
-}, {
-"base": "Node",
 "class": "Repeat",
 "language": "GDScript",
 "path": "res://levels/tools/repeat.gd"
@@ -80,6 +80,7 @@ _global_script_classes=[ {
 "path": "res://ui/basic-ui.gd"
 } ]
 _global_script_class_icons={
+"CiclicMovement": "",
 "EnemyBase": "",
 "GameControllerSrc": "",
 "Gun": "",
@@ -87,7 +88,6 @@ _global_script_class_icons={
 "InstantiateBody": "",
 "InstantiateEnemy": "",
 "LastMissionWorld": "",
-"RandomMovement": "",
 "Repeat": "",
 "ScreenBase": "",
 "TankBody": "",
@@ -105,10 +105,15 @@ config/icon="res://icon.png"
 [autoload]
 
 GameController="*res://game/game-controller.gd"
+Fps="*res://ui/fps.tscn"
 
 [debug]
 
 settings/stdout/print_fps=true
+
+[global]
+
+fps=false
 
 [input]
 

@@ -1,6 +1,6 @@
 extends Node
 
-class_name RandomMovement
+class_name CiclicMovement
 
 var position_list:= PoolVector3Array()
 var next_destination:=0

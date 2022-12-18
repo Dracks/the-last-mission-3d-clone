@@ -28,7 +28,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31, 0 )
 script = ExtResource( 2 )
 
 [node name="screen-04" parent="Level-2" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 182, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 0 )
 
 [node name="Screen-13" parent="Level-2" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 78, 0, 0 )

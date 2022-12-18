@@ -2,10 +2,7 @@ extends KinematicBody
 
 class_name EnemyBase
 
-export var points: int = 1
 export var velocity: float = 10
-
-onready var gc: GameControllerSrc = get_node("/root/GameController")
 
 onready var destination: Vector3 = translation
 

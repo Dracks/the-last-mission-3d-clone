@@ -35,7 +35,7 @@ initial_checkpoint = true
 
 [node name="StaticBody" type="StaticBody" parent="." index="2"]
 transform = Transform( 0.8, 0, 0, 0, 15, 0, 0, 0, 1, -19.2, 1, 0 )
-collision_layer = 0
+collision_layer = 4
 collision_mask = 3
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]

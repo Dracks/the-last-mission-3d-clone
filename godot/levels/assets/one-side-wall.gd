@@ -1,6 +1,8 @@
-extends EnemyBase
+extends RigidBody
 
 export var points: int = 1
+
+export var height: float = 0.5
 
 onready var gc: GameControllerSrc = get_node("/root/GameController")
 

@@ -1,0 +1,86 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://tools/vita-images-generator.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="App Splash" type="ViewportContainer" parent="."]
+margin_left = 3.0
+margin_top = 128.0
+margin_right = 963.0
+margin_bottom = 672.0
+
+[node name="Viewport" type="Viewport" parent="App Splash"]
+size = Vector2( 960, 544 )
+handle_input_locally = false
+render_target_update_mode = 3
+gui_disable_input = true
+
+[node name="Camera" type="Camera" parent="App Splash/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.10895 )
+
+[node name="CSGSphere" type="CSGSphere" parent="App Splash/Viewport"]
+
+[node name="Icon" type="ViewportContainer" parent="."]
+margin_right = 128.0
+margin_bottom = 128.0
+
+[node name="Viewport" type="Viewport" parent="Icon"]
+size = Vector2( 128, 128 )
+handle_input_locally = false
+render_target_update_mode = 3
+gui_disable_input = true
+
+[node name="Camera" type="Camera" parent="Icon/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.10895 )
+
+[node name="CSGSphere" type="CSGSphere" parent="Icon/Viewport"]
+
+[node name="Livearea Button" type="ViewportContainer" parent="."]
+margin_left = 147.0
+margin_top = -1.0
+margin_right = 427.0
+margin_bottom = 157.0
+
+[node name="Viewport" type="Viewport" parent="Livearea Button"]
+size = Vector2( 280, 158 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+gui_disable_input = true
+
+[node name="Camera" type="Camera" parent="Livearea Button/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.10895 )
+
+[node name="CSGSphere" type="CSGSphere" parent="Livearea Button/Viewport"]
+
+[node name="Livearea BG" type="ViewportContainer" parent="."]
+margin_left = 184.0
+margin_top = 3.0
+margin_right = 1024.0
+margin_bottom = 503.0
+
+[node name="Viewport" type="Viewport" parent="Livearea BG"]
+size = Vector2( 840, 500 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+gui_disable_input = true
+
+[node name="Camera" type="Camera" parent="Livearea BG/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.10895 )
+
+[node name="CSGSphere" type="CSGSphere" parent="Livearea BG/Viewport"]
+
+[node name="GenerateImages" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -100.0
+margin_right = 16.0
+margin_bottom = 20.0
+text = "Take screenshot"
+
+[connection signal="pressed" from="GenerateImages" to="." method="_on_generate_images_pressed"]

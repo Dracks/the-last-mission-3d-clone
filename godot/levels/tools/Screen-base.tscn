@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://levels/tools/FocusScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/tools/screen-base.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/paver-16-82729421.jpg" type="Texture" id=3]
+[ext_resource path="res://levels/tools/instantiate-enemy.gd" type="Script" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_albedo_tex_force_srgb = true
@@ -17,8 +18,13 @@ collision_mask = 3
 [node name="Tasks" type="Spatial" parent="."]
 visible = false
 
+[node name="InstantiateEnemy" type="Spatial" parent="Tasks"]
+script = ExtResource( 4 )
+
 [node name="Background" type="CSGBox" parent="."]
 transform = Transform( 30, 0, 0, 0, 20, 0, 0, 0, 1, 0, 0, -5 )
 material = SubResource( 1 )
+
+[node name="Enemies" type="Spatial" parent="."]
 
 [connection signal="on_focus" from="Focus" to="." method="_on_Focus_on_focus"]

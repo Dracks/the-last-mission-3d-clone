@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://levels/tools/tiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/assets/roof-1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/assets/floor-1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://levels/tools/Screen-base.tscn" type="PackedScene" id=4]
-[ext_resource path="res://levels/tools/instantiate-enemy.gd" type="Script" id=5]
 [ext_resource path="res://enemies/sample.tscn" type="PackedScene" id=6]
 [ext_resource path="res://enemies/ciclic-movement.gd" type="Script" id=7]
 [ext_resource path="res://levels/assets/electricity-tower.tscn" type="PackedScene" id=8]
@@ -15,47 +14,6 @@
 
 [node name="Tasks" parent="." index="1"]
 visible = true
-
-[node name="InstantiateEnemy" type="Spatial" parent="Tasks" index="0"]
-script = ExtResource( 5 )
-
-[node name="KinematicBody" parent="Tasks/InstantiateEnemy" index="0" instance=ExtResource( 6 )]
-
-[node name="Movement" type="Node" parent="Tasks/InstantiateEnemy/KinematicBody" index="2"]
-script = ExtResource( 7 )
-
-[node name="Spatial" type="Spatial" parent="Tasks/InstantiateEnemy/KinematicBody/Movement" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.67828, 9.17202, 0 )
-
-[node name="Spatial2" type="Spatial" parent="Tasks/InstantiateEnemy/KinematicBody/Movement" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.67828, -8.18076, 0 )
-
-[node name="Spatial3" type="Spatial" parent="Tasks/InstantiateEnemy/KinematicBody/Movement" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7447, 9.45608, 0 )
-
-[node name="Spatial4" type="Spatial" parent="Tasks/InstantiateEnemy/KinematicBody/Movement" index="3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7447, -6.59466, 0 )
-
-[node name="InstantiateEnemy2" type="Spatial" parent="Tasks" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.57628, 0 )
-script = ExtResource( 5 )
-
-[node name="KinematicBody" parent="Tasks/InstantiateEnemy2" index="0" instance=ExtResource( 6 )]
-
-[node name="Movement" type="Node" parent="Tasks/InstantiateEnemy2/KinematicBody" index="2"]
-script = ExtResource( 7 )
-
-[node name="Spatial" type="Spatial" parent="Tasks/InstantiateEnemy2/KinematicBody/Movement" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.42046, 9.17202, 0 )
-
-[node name="Spatial2" type="Spatial" parent="Tasks/InstantiateEnemy2/KinematicBody/Movement" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8164, -10.1908, 0 )
-
-[node name="Spatial4" type="Spatial" parent="Tasks/InstantiateEnemy2/KinematicBody/Movement" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39977, -4.92688, 0 )
-
-[node name="Spatial3" type="Spatial" parent="Tasks/InstantiateEnemy2/KinematicBody/Movement" index="3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7447, -9.89196, 0 )
 
 [node name="Tiles" parent="." index="2" instance=ExtResource( 1 )]
 
@@ -83,7 +41,7 @@ height = 1.5
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.6957, 0 )
 
 [node name="Wall" type="Spatial" parent="." index="7"]
-transform = Transform( -2, 1.74846e-07, 0, -1.74846e-07, -2, 0, 0, 0, 2, 10.3989, 13.141, 0 )
+transform = Transform( -2, 1.74846e-07, 0, -1.74846e-07, -2, 0, 0, 0, 2, 10.3989, 13.9001, 0 )
 script = ExtResource( 9 )
 
 [node name="OneSideWall" parent="Wall" index="0" instance=ExtResource( 10 )]
@@ -117,7 +75,44 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.5, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 0 )
 
 [node name="OneSideWall11" parent="Wall" index="10" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0 )
 
 [node name="OneSideWall12" parent="Wall" index="11" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5, 0 )
+
+[node name="KinematicBody" parent="Enemies" index="0" instance=ExtResource( 6 )]
+autoinstance_path = NodePath("../../Tasks/InstantiateEnemy")
+
+[node name="Movement" type="Node" parent="Enemies/KinematicBody" index="2"]
+script = ExtResource( 7 )
+
+[node name="Spatial" type="Spatial" parent="Enemies/KinematicBody/Movement" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.67828, 5.48166, 0 )
+
+[node name="Spatial2" type="Spatial" parent="Enemies/KinematicBody/Movement" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.67828, -8.18076, 0 )
+
+[node name="Spatial3" type="Spatial" parent="Enemies/KinematicBody/Movement" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.81586, 6.02931, 0 )
+
+[node name="Spatial4" type="Spatial" parent="Enemies/KinematicBody/Movement" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.33049, -9.0549, 0 )
+
+[node name="KinematicBody2" parent="Enemies" index="1" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.57628, 0 )
+autoinstance_path = NodePath("../../Tasks/InstantiateEnemy")
+
+[node name="Movement" type="Node" parent="Enemies/KinematicBody2" index="2"]
+script = ExtResource( 7 )
+
+[node name="Spatial" type="Spatial" parent="Enemies/KinematicBody2/Movement" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.42046, 3.28501, 0 )
+
+[node name="Spatial2" type="Spatial" parent="Enemies/KinematicBody2/Movement" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8164, -10.1908, 0 )
+
+[node name="Spatial4" type="Spatial" parent="Enemies/KinematicBody2/Movement" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39977, -4.92688, 0 )
+
+[node name="Spatial3" type="Spatial" parent="Enemies/KinematicBody2/Movement" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.45183, -9.89196, 0 )

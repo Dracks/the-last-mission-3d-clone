@@ -2,20 +2,30 @@ extends Spatial
 
 class_name InstantiateEnemy
 
-var enemy_base: EnemyBase
-var enemy
+class EnemyInfo:
+	var enemy: EnemyDestroyable
+	var deleted:=true
+	var position: Vector3
 
+var enemy_list:Array=[]
 
-func _ready():
-	if get_child_count() ==1:
-		enemy_base = get_child(0)
-		remove_child(enemy_base)
-	else:
-		print("Please only one child per instantiate-enemy")
-		
+func add_enemy(enemy: EnemyDestroyable):
+	var parent = enemy.get_parent()
+	parent.remove_child(enemy)
+	enemy.autoinstance_path=NodePath()
+	var enemy_info = EnemyInfo.new()
+	enemy_info.enemy=enemy.duplicate()
+	enemy_info.position = enemy.to_global(Vector3.ZERO)
+	enemy_list.push_back(enemy_info)
+
+func on_enemy_destroyed(enemy_info: EnemyInfo):
+	enemy_info.deleted = true
+	
 func init():
-	if not is_instance_valid(enemy):
-		enemy = enemy_base.duplicate()
-	if not enemy.get_parent():
-		owner.add_child(enemy)
-	enemy.set_translation(owner.to_local(to_global(Vector3.ZERO)))
+	for enemy_info in enemy_list:
+		if enemy_info.deleted:
+			var enemy = enemy_info.enemy.duplicate()
+			enemy_info.deleted = false
+			owner.add_child(enemy)
+			enemy.set_translation(owner.to_local(enemy_info.position))
+			enemy.connect("destroyed", self, "on_enemy_destroyed", [enemy_info])

@@ -1,4 +1,4 @@
-extends Node
+extends EnemyMovement
 
 class_name CiclicMovement
 

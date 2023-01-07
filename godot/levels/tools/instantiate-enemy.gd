@@ -10,13 +10,14 @@ class EnemyInfo:
 var enemy_list:Array=[]
 
 func add_enemy(enemy: EnemyDestroyable):
+	yield(get_tree(), "idle_frame")
 	var parent = enemy.get_parent()
-	parent.remove_child(enemy)
 	enemy.autoinstance_path=NodePath()
 	var enemy_info = EnemyInfo.new()
 	enemy_info.enemy=enemy.duplicate()
 	enemy_info.position = enemy.to_global(Vector3.ZERO)
 	enemy_list.push_back(enemy_info)
+	parent.remove_child(enemy)
 
 func on_enemy_destroyed(enemy_info: EnemyInfo):
 	enemy_info.deleted = true

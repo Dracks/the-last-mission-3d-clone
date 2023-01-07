@@ -10,7 +10,5 @@ func _physics_process(delta):
 	if is_runing and not is_top:
 		move_and_slide(Vector3(0,speed*delta, 0))
 
-
-func _on_trigger_area_entered(area):
-	print("Hey I'm inside")
+func _on_Area_body_entered(body):
 	is_runing = true

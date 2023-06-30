@@ -20,7 +20,7 @@ width = 1.4
 height = 3.0
 
 [node name="Tiles2" parent="." index="3" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -13, 0 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -13, 0 )
 quantity = 16
 
 [node name="Tile" parent="Tiles2" index="1" instance=ExtResource( 3 )]
@@ -28,27 +28,27 @@ width = 1.4
 height = 3.0
 
 [node name="Roof" parent="." index="4" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 15.5, 0 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 15.5, 0 )
 quantity = 52
 
 [node name="Tile" parent="Roof" index="1" instance=ExtResource( 2 )]
 width = 1.0
 height = 1.5
 
-[node name="KinematicBody" parent="Enemies" index="0" instance=ExtResource( 6 )]
+[node name="CharacterBody3D" parent="Enemies" index="0" instance=ExtResource( 6 )]
 autoinstance_path = NodePath("../../Tasks/InstantiateEnemy")
 
-[node name="Movement" type="Node" parent="Enemies/KinematicBody" index="2"]
+[node name="Movement" type="Node" parent="Enemies/CharacterBody3D" index="2"]
 script = ExtResource( 7 )
 
-[node name="Spatial" type="Spatial" parent="Enemies/KinematicBody/Movement" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.67828, 9.17202, 0 )
+[node name="Node3D" type="Node3D" parent="Enemies/CharacterBody3D/Movement" index="0"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.67828, 9.17202, 0 )
 
-[node name="Spatial2" type="Spatial" parent="Enemies/KinematicBody/Movement" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.67828, -8.18076, 0 )
+[node name="Spatial2" type="Node3D" parent="Enemies/CharacterBody3D/Movement" index="1"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.67828, -8.18076, 0 )
 
-[node name="Spatial3" type="Spatial" parent="Enemies/KinematicBody/Movement" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7447, 9.45608, 0 )
+[node name="Spatial3" type="Node3D" parent="Enemies/CharacterBody3D/Movement" index="2"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7447, 9.45608, 0 )
 
-[node name="Spatial4" type="Spatial" parent="Enemies/KinematicBody/Movement" index="3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7447, -6.59466, 0 )
+[node name="Spatial4" type="Node3D" parent="Enemies/CharacterBody3D/Movement" index="3"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7447, -6.59466, 0 )

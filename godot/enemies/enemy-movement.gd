@@ -2,17 +2,17 @@ extends Node
 
 class_name EnemyMovement
 
-export var velocity: float = 10
+@export var velocity: float = 10
 
-onready var enemy_base = get_parent()
-onready var destination: Vector3 = enemy_base.translation
+@onready var enemy_base = get_parent()
+@onready var destination: Vector3 = enemy_base.position
 
 func _physics_process(delta):
 	var advance = delta*velocity
 	var advance_square = advance*advance
-	if enemy_base.translation.distance_squared_to(destination) < advance_square:
+	if enemy_base.position.distance_squared_to(destination) < advance_square:
 		destination = get_next()
-	var direction = enemy_base.translation.direction_to(destination)
+	var direction = enemy_base.position.direction_to(destination)
 	var collision = enemy_base.move_and_collide(direction*advance)
 	if collision:
 		if collision.collider.has_method('damage'):

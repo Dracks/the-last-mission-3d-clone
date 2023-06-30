@@ -1,4 +1,4 @@
-extends Spatial
+extends Node3D
 
 class_name InstantiateEnemy
 
@@ -10,7 +10,7 @@ class EnemyInfo:
 var enemy_list:Array=[]
 
 func add_enemy(enemy: EnemyDestroyable):
-	yield(get_tree(), "idle_frame")
+	await get_tree().idle_frame
 	var parent = enemy.get_parent()
 	enemy.autoinstance_path=NodePath()
 	var enemy_info = EnemyInfo.new()
@@ -28,5 +28,5 @@ func init():
 			var enemy = enemy_info.enemy.duplicate()
 			enemy_info.deleted = false
 			owner.add_child(enemy)
-			enemy.set_translation(owner.to_local(enemy_info.position))
-			enemy.connect("destroyed", self, "on_enemy_destroyed", [enemy_info])
+			enemy.set_position(owner.to_local(enemy_info.position))
+			enemy.connect("destroyed",Callable(self,"on_enemy_destroyed").bind(enemy_info))

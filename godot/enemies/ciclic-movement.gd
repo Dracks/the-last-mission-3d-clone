@@ -2,7 +2,7 @@ extends EnemyMovement
 
 class_name CiclicMovement
 
-var position_list:= PoolVector3Array()
+var position_list:= PackedVector3Array()
 var next_destination:=0
 
 func _ready():

@@ -1,6 +1,6 @@
-tool
+@tool
 
-extends Spatial
+extends Node3D
 
 class_name Vertical
 # Declare member variables here. Examples:
@@ -14,11 +14,11 @@ func _ready():
 	var offset: float=0
 	var children_list = get_children()
 	for child in children_list:
-		if child.has_method("set_translation"):
+		if child.has_method("set_position"):
 			var new_offset : float = child.height
 			offset = offset + new_offset + previous_offset
 			previous_offset = new_offset
-			child.set_translation(Vector3(0, offset, 0))
+			child.set_position(Vector3(0, offset, 0))
 			
 	
 

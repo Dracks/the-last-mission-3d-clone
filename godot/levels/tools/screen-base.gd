@@ -1,11 +1,11 @@
-tool 
+@tool 
 
-extends Spatial
+extends Node3D
 
 class_name ScreenBase
 
 const WINDOW_HEIGHT=15
-export(int) var width : float = 26 setget set_screen_width
+@export var width: int : float = 26 : set = set_screen_width
 
 func set_screen_width(new_width: float):
 	width = new_width

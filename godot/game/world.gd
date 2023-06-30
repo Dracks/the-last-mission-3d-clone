@@ -1,8 +1,8 @@
-extends Spatial
+extends Node3D
 
 class_name LastMissionWorld
 
-export var camera_diff : float = 55
+@export var camera_diff : float = 55
 
 var current_camera = 0
 
@@ -24,11 +24,11 @@ func _input(event):
 	camera_list[current_camera].current = true
 	
 
-func _on_Head_shot(bullet: KinematicBody, translation: Vector3, looking_right:bool):
-	# var new_bullet : KinematicBody = bullet.instance()
+func _on_Head_shot(bullet: CharacterBody3D, position: Vector3, looking_right:bool):
+	# var new_bullet : CharacterBody3D = bullet.instantiate()
 	add_child(bullet)
 	bullet.looking_right = looking_right
-	bullet.set_translation(to_local(translation))
+	bullet.set_position(to_local(position))
 
 
 func _on_main_menu_pressed():

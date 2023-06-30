@@ -17,7 +17,9 @@ func _ready():
 			print("Error ({}) loading start.json".format(err))
 			start_default()
 		else:
-			var config := JSON.parse(f.get_as_text())
+			var test_json_conv = JSON.new()
+			test_json_conv.parse(f.get_as_text())
+			var config := test_json_conv.get_data()
 			if config.error:
 				print("Error {} parsing start.json: \n{}\n{}".format([config.error, config.error_string, config.error_line]))
 				start_default()
@@ -40,7 +42,7 @@ func execute_data(config: Dictionary):
 
 
 func start_default():
-	var error = get_tree().change_scene_to(main)
+	var error = get_tree().change_scene_to_packed(main)
 	if error:
 		print('Error ({}) loading main scene'.format(error))
 		
@@ -50,6 +52,6 @@ func start_game(data: Dictionary):
 	game_controller.initial_points = data.get('points', game_controller.initial_points)
 	game_controller.initial_energy = data.get('energy', game_controller.initial_energy)
 	game_controller.initial_values()
-	var error = get_tree().call_deferred("change_scene_to", worldScene)
+	var error = get_tree().call_deferred("change_scene_to_packed", worldScene)
 	if error:
 		print('Error ({}) loading main scene'.format(error))

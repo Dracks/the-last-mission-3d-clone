@@ -1,6 +1,6 @@
-extends KinematicBody
+extends CharacterBody3D
 
-signal shot(bullet, translation, looking_right)
+signal shot(bullet, position, looking_right)
 signal life_lost
 
 class_name Turret
@@ -16,18 +16,18 @@ var current_angle: float = 0
 var is_coupled: bool = false
 
 # velocity
-export var v_rotate: float = PI*1.5
-export var v_horizontal: float = 14
-export var v_vertical: float = 14
+@export var v_rotate: float = PI*1.5
+@export var v_horizontal: float = 14
+@export var v_vertical: float = 14
 
 var up_direction = Vector3(0, v_vertical, 0)
 var forward = Vector3(v_horizontal, 0, 0)
 
 var tank_body : TankBody
 
-onready var gc = get_node("/root/GameController")
+@onready var gc = get_node("/root/GameController")
 
-onready var gun = get_node('Gun')
+@onready var gun = get_node('Gun')
 
 func _ready():
 	rotate_logic(0)
@@ -84,7 +84,7 @@ func move_with_body(movement: Vector3):
 			movement = collision2.get_travel()"""
 		tank_body.move_and_collide(movement)
 	else: 
-		movement.z = -translation.z
+		movement.z = -position.z
 	move_and_collide(movement)
 	
 

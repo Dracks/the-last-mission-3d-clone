@@ -1,10 +1,10 @@
-extends Spatial
+extends Node3D
 
-export var initial_checkpoint := false
+@export var initial_checkpoint := false
 
 var tank_body_in := false
 
-onready var gc : GameController = get_node('/root/GameController')
+@onready var gc : GameController = get_node('/root/GameController')
 
 func _ready():
 	if self.initial_checkpoint:

@@ -11,6 +11,7 @@ albedo_texture = ExtResource( 3 )
 
 [node name="ScreenBase" type="Spatial"]
 script = ExtResource( 2 )
+width = 26.0
 
 [node name="Focus" parent="." instance=ExtResource( 1 )]
 collision_mask = 3

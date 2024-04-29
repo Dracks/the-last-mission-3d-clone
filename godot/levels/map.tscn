@@ -16,17 +16,19 @@ script = ExtResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 0 )
 
 [node name="Screen-09" parent="Level-1" instance=ExtResource( 6 )]
-
-[node name="Screen-03" parent="Level-1" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 78, 0, 0 )
 
-[node name="screen-02" parent="Level-1" instance=ExtResource( 3 )]
+[node name="Screen-03" parent="Level-1" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 130, 0, 0 )
 
-[node name="screen-03" parent="Level-1" instance=ExtResource( 3 )]
+[node name="screen-02" parent="Level-1" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 182, 0, 0 )
 
+[node name="screen-03" parent="Level-1" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 234, 0, 0 )
+
 [node name="Screen-08" parent="Level-1" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 286, 0, 0 )
 
 [node name="Level-2" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31, 0 )

@@ -8,6 +8,7 @@
 [ext_resource path="res://enemies/ciclic-movement.gd" type="Script" id=7]
 
 [node name="Screen-02" instance=ExtResource( 4 )]
+width = 26.0
 
 [node name="Tasks" parent="." index="1"]
 visible = true

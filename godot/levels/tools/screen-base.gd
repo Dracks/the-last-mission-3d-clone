@@ -5,7 +5,7 @@ extends Node3D
 class_name ScreenBase
 
 const WINDOW_HEIGHT=15
-@export var width: int : float = 26 : set = set_screen_width
+@export var width: float = 26 : set = set_screen_width
 
 func set_screen_width(new_width: float):
 	width = new_width

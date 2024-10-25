@@ -1,9 +1,10 @@
 extends CharacterBody3D
 
+class_name Turret
+
 signal shot(bullet, position, looking_right)
 signal life_lost
 
-class_name Turret
 
 var up: bool = false
 var down: bool = false
@@ -20,7 +21,7 @@ var is_coupled: bool = false
 @export var v_horizontal: float = 14
 @export var v_vertical: float = 14
 
-var up_direction = Vector3(0, v_vertical, 0)
+var my_up_direction = Vector3(0, v_vertical, 0)
 var forward = Vector3(v_horizontal, 0, 0)
 
 var tank_body : TankBody
@@ -50,16 +51,16 @@ func _process(delta:float):
 func _physics_process(delta: float):
 	if up or down:
 		if up and not down:
-			move_and_collide(up_direction*delta)
+			move_and_collide(my_up_direction*delta)
 		elif down:
-			move_and_collide(-2*delta*up_direction)
+			move_and_collide(-2*delta*my_up_direction)
 		else:
-			move_and_collide(-delta*up_direction)
+			move_and_collide(-delta*my_up_direction)
 	else:
-		var collision = move_and_collide(-delta*up_direction, true, true, true)
-		if not collision or not collision.travel or abs(collision.travel.z)>0.01:
-			move_and_collide(-delta*up_direction)
-		# move_and_collide(-delta*up_direction)
+		var collision := move_and_collide(-delta*my_up_direction, true, true, true)
+		if not collision or abs(collision.get_travel().z)>0.01:
+			move_and_collide(-delta*my_up_direction)
+		# move_and_collide(-delta*my_up_direction)
 	
 	if left or right:
 		if left and not right:

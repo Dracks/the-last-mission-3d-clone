@@ -8,5 +8,5 @@ class_name TileBase
 
 func _ready():
 	var box: CSGBox3D = $Box
-	width = box.width
-	height = box.height
+	width = box.size.x
+	height = box.size.y

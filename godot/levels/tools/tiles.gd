@@ -23,7 +23,7 @@ func _ready():
 		sizeY = quantity*offsetY/2
 		
 		baseShapeX = tile.width/2
-	if not Engine.editor_hint:
+	if not Engine.is_editor_hint:
 		remove_child(tile)
 	for i in range(quantity):
 		var node = tile.duplicate()
@@ -31,8 +31,6 @@ func _ready():
 		add_child(node) # Parent could be any node in the scene
 	
 	var boxShape : BoxShape3D = $Body/CollisionShape3D.shape
-	boxShape.set_extents(Vector3(sizeX+baseShapeX, sizeY+baseShapeY, 3))
+	boxShape.size = Vector3(sizeX+baseShapeX, sizeY+baseShapeY, 3)
 
 	$Body.position=Vector3(sizeX, sizeY, 0)
-
-

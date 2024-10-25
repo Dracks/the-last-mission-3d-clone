@@ -9,22 +9,21 @@ var main = preload("res://menus/main.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var f := File.new()
-	var doFileExists = f.file_exists(FILE_NAME)
-	if doFileExists:
-		var err := f.open(FILE_NAME, f.READ)
+	
+	if FileAccess.file_exists(FILE_NAME):
+		var file := FileAccess.open(FILE_NAME, FileAccess.READ)
+		var err := file.get_error()
 		if err:
 			print("Error ({}) loading start.json".format(err))
 			start_default()
 		else:
-			var test_json_conv = JSON.new()
-			test_json_conv.parse(f.get_as_text())
-			var config := test_json_conv.get_data()
-			if config.error:
-				print("Error {} parsing start.json: \n{}\n{}".format([config.error, config.error_string, config.error_line]))
+			var json = JSON.new()
+			var error := json.parse(file.get_as_text())
+			if error:
+				print("Error {} parsing start.json: \n{}".format([ json.get_error_message(), json.get_error_line()]))
 				start_default()
 			else:
-				execute_data(config.result)
+				execute_data(json.data)
 	else:
 		start_default()
 

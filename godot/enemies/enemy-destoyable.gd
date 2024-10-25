@@ -6,7 +6,7 @@ signal destroyed
 
 @export var points: int = 1
 
-@export var autoinstance_path: NodePath: NodePath
+@export var autoinstance_path: NodePath
 
 @onready var gc: GameControllerSrc = get_node("/root/GameController")
 

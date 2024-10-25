@@ -7,7 +7,7 @@ class_name Gun
 
 var is_shoting: bool = false
 var next_shot_delay : float = 0
-@export var max_delay: float: float = 0.2
+@export var max_delay: float = 0.2
 var enabled: bool = true
 
 @export var bullet: PackedScene
